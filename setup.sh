@@ -2,7 +2,9 @@
 
 # setup
 vault operator init -key-shares=1 -key-threshold=1 -format=json > init.json
+sleep 0.5
 vault operator unseal $(cat init.json | jq -r .unseal_keys_hex[0])
+sleep 0.5
 export VAULT_TOKEN=$(cat init.json| jq -r .root_token)
 
 
