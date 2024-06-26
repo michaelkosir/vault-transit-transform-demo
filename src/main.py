@@ -1,5 +1,4 @@
 from src.vault import Vault
-
 from fastapi import FastAPI
 from pydantic import BaseModel
 
@@ -16,7 +15,6 @@ class Item(BaseModel):
 
 @app.post("/item")
 async def create_item(item: Item):
-
     item.message = vault.encrypt(item.message)
     item.ccn = vault.encode(item.ccn, "ccn")
 
