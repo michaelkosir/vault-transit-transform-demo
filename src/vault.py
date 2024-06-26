@@ -2,6 +2,7 @@ import base64
 import hvac
 import os
 
+# demo purposes, use identity-based access in prod
 VAULT_ADDR = os.getenv('VAULT_ADDR')
 VAULT_TOKEN = os.getenv('VAULT_TOKEN')
 
