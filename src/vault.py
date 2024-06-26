@@ -36,20 +36,20 @@ class Vault:
         )
         return self._b64d(r["data"]["plaintext"])
 
-    def encode(self, m, t):
+    def encode(self, m, transformation):
         r = self.cl.secrets.transform.encode(
             mount_point=self.transform_mount,
             role_name=self.transform_role,
-            transformation=t,
+            transformation=transformation,
             value=m,
         )
         return r["data"]["encoded_value"]
 
-    def decode(self, m, t):
+    def decode(self, m, transformation):
         r = self.cl.secrets.transform.decode(
             mount_point=self.transform_mount,
             role_name=self.transform_role,
-            transformation=t,
+            transformation=transformation,
             value=m,
         )
         return r["data"]["decoded_value"]
