@@ -5,7 +5,6 @@ vault secrets enable transit
 
 vault write transit/keys/example type="aes256-gcm96"
 
-
 # transform
 vault secrets enable transform
 
