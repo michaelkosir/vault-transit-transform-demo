@@ -20,6 +20,10 @@ cd ..
 # wait for vault to be ready
 vault status
 
+vault operator init -key-shares=1 -key-threshold=1 -format=json > init.json
+vault operator unseal $(cat init.json | jq -r .unseal_keys_hex[0])
+export VAULT_TOKEN=$(cat init.json| jq -r .root_token)
+
 # setup vault
 source setup.sh
 
